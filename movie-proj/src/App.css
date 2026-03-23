@@ -100,15 +100,22 @@
 
 }
 .btn{
-  width: 22%;
+  width: 25%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 
 }
-.fav-btn , .buy-btn {
+.fav-btn , .add-to-cart-btn ,.un-fav-btn , .remove-btn{
   padding:5px 10px 5px 10px;
+  border-radius: 5px;
 }
-.fav-btn{
-  margin-left: 5px;
+
+.un-fav-btn{
+  background-color: black;
+  color: white;
+}
+.remove-btn{
+  background-color: rgb(101, 97, 97);
+  color: white;
 }

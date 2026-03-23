@@ -9,7 +9,9 @@ class MovieCard extends React.Component{
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis ducimus pariatur delectus! ",
             price:160,
             rating:7.8,
-            star:0
+            star:0,
+            fav:false,
+            cartStatus:false
         }
     }
 
@@ -23,17 +25,17 @@ class MovieCard extends React.Component{
             this.setState((prevState)=> ({star:prevState.star-0.5}));
         }
     }
-    markFavorite = ()=>{
-
+    handleFav = ()=>{
+        this.setState({fav:!this.state.fav});
     }
-    addToCart = ()=>{
-
+    handleCart = ()=>{
+        this.setState({cartStatus:!this.state.cartStatus});
     }
 
 
     //jsx for card
     render(){
-        const {posterUrl , title , description , price , rating , star} = this.state;
+        const {posterUrl , title , description , price , rating , star , fav , cartStatus} = this.state;
         return(
             <>
                 <div className="card">
@@ -54,8 +56,8 @@ class MovieCard extends React.Component{
                             
                         </div>
                         <div className="btn">
-                        <button className="fav-btn" onClick={this.markFavorite}>Favorite</button>
-                        <button className="buy-btn" onClick={this.addToCart}>Buy</button>
+                        <button className={fav?"un-fav-btn":"fav-btn"} onClick={this.handleFav}>{fav?"Un-Favorite":"Favorite"}</button>
+                        <button className={cartStatus?"remove-btn":"add-to-cart-btn"} onClick={this.handleCart}>{cartStatus?"Remove From Cart":"Add To Cart"}</button>
                         </div>
 
                     </div>
