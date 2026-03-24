@@ -1,13 +1,12 @@
-import React from "react";
 
-class MovieCard extends React.Component {
+
+function MovieCard (props) {
 
 
 
     //jsx for card
-    render() {
-        const { posterUrl, title, description, price, rating, star, fav, cartStatus } = this.props.movie;
-        const { addStar, minusStar, handleCart, handleFav, handleCartCount } = this.props.methods;
+        const { posterUrl, title, description, price, rating, star, fav, cartStatus } = props.movie;
+        const { addStar, minusStar, handleCart, handleFav } = props.methods;
         return (
             <>
                 <div className="card">
@@ -24,7 +23,7 @@ class MovieCard extends React.Component {
 
                                 <img alt="minus"
                                     className="minus-btn"
-                                    onClick={() => { minusStar(this.props.movie) }}
+                                    onClick={() => { minusStar(props.movie) }}
                                     src="https://cdn-icons-png.flaticon.com/128/43/43625.png" />
 
                                 <img alt="star"
@@ -33,7 +32,7 @@ class MovieCard extends React.Component {
 
                                 <img alt="plus"
                                     className="plus-btn"
-                                    onClick={() => { addStar(this.props.movie) }}
+                                    onClick={() => { addStar(props.movie) }}
                                     src="https://cdn-icons-png.flaticon.com/128/1828/1828925.png" />
 
                                 <span>{star}</span>
@@ -42,14 +41,13 @@ class MovieCard extends React.Component {
                             <div className="btn">
                                 <button
                                     className={fav ? "un-fav-btn" : "fav-btn"}
-                                    onClick={() => { handleFav(this.props.movie) }}>
+                                    onClick={() => { handleFav(props.movie) }}>
                                     {fav ? "Un-Favorite" : "Favorite"}
                                 </button>
                                 <button
                                     className={cartStatus ? "remove-btn" : "add-to-cart-btn"}
                                     onClick={() => {
-                                        handleCart(this.props.movie);
-                                        handleCartCount(cartStatus ? "remove" : "add");
+                                        handleCart(props.movie)
                                     }}>
                                     {cartStatus ? "Remove From Cart" : "Add To Cart"}
                                 </button>
@@ -63,7 +61,6 @@ class MovieCard extends React.Component {
 
             </>
         )
-    }
 }
 
 export default MovieCard;

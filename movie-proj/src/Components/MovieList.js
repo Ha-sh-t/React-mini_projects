@@ -1,10 +1,8 @@
-import React from "react";
-import MovieCard from "./MovieCard";
-class MovieList extends React.Component {
-    
 
-    render() {
-        const {movies , methods} = this.props;
+import MovieCard from "./MovieCard";
+function MovieList(props){
+    
+        const {movies , methods} = props;
 
         return (
             <>
@@ -17,7 +15,6 @@ class MovieList extends React.Component {
                 }
             </>
         )
-    }
 
 }
 

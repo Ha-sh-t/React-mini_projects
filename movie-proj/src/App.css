@@ -104,15 +104,16 @@
 
 }
 .btn{
-  width: 25%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+
 
 }
 .fav-btn , .add-to-cart-btn ,.un-fav-btn , .remove-btn{
   padding:5px 10px 5px 10px;
   border-radius: 5px;
+  margin-right:5px;
 }
 
 .un-fav-btn{

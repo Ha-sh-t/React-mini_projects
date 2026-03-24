@@ -40,32 +40,27 @@ class App extends React.Component {
 
   }
   handleCart = (movie) => {
-    const { movies } = this.state;
+    let { movies ,cartCount , showCount} = this.state;
     const mov_idx = movies.indexOf(movie);
     movies[mov_idx].cartStatus = !movies[mov_idx].cartStatus
-    this.setState({ movies });
+    if(movies[mov_idx].cartStatus){
+      cartCount +=1;
+    }else{
+      cartCount -=1;
+    }
+    if(cartCount === 0){
+      showCount = false;
+    }else if(cartCount > 0 && !showCount) {
+      showCount = true;
+    }
+    this.setState({ movies , cartCount , showCount });
   }
 
-  handleCartCount = (status) => {
 
-    if(status === "add"){
-      this.setState({cartCount:Number(this.state.cartCount) + 1 ,showCount:true})
-    }
-    else if(status === "remove"){
-      if(this.state.cartCount === 1){
-        this.setState({cartCount:Number(this.state.cartCount) - 1 ,showCount:false})
-      }else{
-        this.setState({cartCount:Number(this.state.cartCount) - 1})
-      }
-    }
-
-
-  }
+  
   render() {
-    const {addStar , minusStar , handleCart , handleCartCount , handleFav} = this;
-    const methods = {addStar , minusStar , handleCart , handleCartCount,handleFav};
-    console.log(typeof this.state.showCount)
-    console.log(typeof this.state.cartCount)
+    const {addStar , minusStar , handleCart , handleFav} = this;
+    const methods = {addStar , minusStar , handleCart ,handleFav};
     return (
       <div className="App">
         <Navbar show={this.state.showCount} count={this.state.cartCount}/>

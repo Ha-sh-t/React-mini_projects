@@ -1,4 +1,4 @@
-import React from "react";
+
 import styled from 'styled-components';
 
 const Nav = styled.div`
@@ -46,11 +46,9 @@ left:50%;
 top:0;
 
 `
-class Navbar extends React.Component{
+function Navbar (props){
 
-    render(){
-        const {show , count} = this.props;
-        console.log(show)
+        const {show , count} = props;
         return(
             <>
                 <Nav>
@@ -62,7 +60,7 @@ class Navbar extends React.Component{
                 </Nav>
             </>
         )
-    }
+    
 }
 
 export default Navbar;
