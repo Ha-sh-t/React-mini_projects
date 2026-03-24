@@ -5,6 +5,8 @@
 .App{
   display:flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card{
@@ -14,6 +16,7 @@
   border:1px solid;
   padding: 5px;
   display: flex;
+  margin: 10px;
 
 }
 .left-part{

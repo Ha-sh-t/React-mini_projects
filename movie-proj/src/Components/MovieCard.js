@@ -1,41 +1,13 @@
 import React from "react";
 
 class MovieCard extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            posterUrl:"https://imgs.search.brave.com/Pc8p6D_8O0kzxUM49QzZwnHQyNSuETwlohTVsVi7wNI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDE4MTA1/MTIuanBn",
-            title:"The Ant man",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis ducimus pariatur delectus! ",
-            price:160,
-            rating:7.8,
-            star:0,
-            fav:false,
-            cartStatus:false
-        }
-    }
 
-    addStar = ()=>{
-        if(this.state.star < 5){
-            this.setState((prevState)=> ({star:prevState.star+0.5}));
-        }
-    }
-    minusStar = ()=>{
-        if(this.state.star > 0 ){
-            this.setState((prevState)=> ({star:prevState.star-0.5}));
-        }
-    }
-    handleFav = ()=>{
-        this.setState({fav:!this.state.fav});
-    }
-    handleCart = ()=>{
-        this.setState({cartStatus:!this.state.cartStatus});
-    }
 
 
     //jsx for card
     render(){
-        const {posterUrl , title , description , price , rating , star , fav , cartStatus} = this.state;
+        const {posterUrl , title , description , price , rating , star , fav , cartStatus} = this.props.movie;
+        const {addStar , minusStar , handleCart , handleFav} = this.props.methods;
         return(
             <>
                 <div className="card">
@@ -49,15 +21,35 @@ class MovieCard extends React.Component{
                     <div className="footer">
                         <div className="ratings">Ratings:{rating} </div>
                         <div className="star">
-                            <img alt="minus" className="minus-btn" onClick={this.minusStar} src="https://cdn-icons-png.flaticon.com/128/43/43625.png" />
-                            <img alt="star" className="star-icon" src="https://cdn-icons-png.flaticon.com/128/1828/1828884.png"/>
-                            <img alt="plus" className="plus-btn" onClick={this.addStar} src="https://cdn-icons-png.flaticon.com/128/1828/1828925.png"/>
+
+                            <img alt="minus" 
+                            className="minus-btn" 
+                            onClick={()=>{minusStar(this.props.movie)}} 
+                            src="https://cdn-icons-png.flaticon.com/128/43/43625.png" />
+
+                            <img alt="star" 
+                            className="star-icon" 
+                            src="https://cdn-icons-png.flaticon.com/128/1828/1828884.png"/>
+
+                            <img alt="plus" 
+                            className="plus-btn" 
+                            onClick={()=>{addStar(this.props.movie)}} 
+                            src="https://cdn-icons-png.flaticon.com/128/1828/1828925.png"/>
+
                             <span>{star}</span>
                             
                         </div>
                         <div className="btn">
-                        <button className={fav?"un-fav-btn":"fav-btn"} onClick={this.handleFav}>{fav?"Un-Favorite":"Favorite"}</button>
-                        <button className={cartStatus?"remove-btn":"add-to-cart-btn"} onClick={this.handleCart}>{cartStatus?"Remove From Cart":"Add To Cart"}</button>
+                        <button 
+                            className={fav?"un-fav-btn":"fav-btn"} 
+                            onClick={()=>{handleFav(this.props.movie)}}>
+                            {fav?"Un-Favorite":"Favorite"}
+                        </button>
+                        <button 
+                            className={cartStatus?"remove-btn":"add-to-cart-btn"} 
+                            onClick={()=>{handleCart(this.props.movie)}}>
+                            {cartStatus?"Remove From Cart":"Add To Cart"}
+                        </button>
                         </div>
 
                     </div>
