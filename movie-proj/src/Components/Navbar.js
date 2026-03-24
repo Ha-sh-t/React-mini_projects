@@ -49,13 +49,15 @@ top:0;
 class Navbar extends React.Component{
 
     render(){
+        const {show , count} = this.props;
+        console.log(show)
         return(
             <>
                 <Nav>
                 <Title>title</Title>
                 <CartContainer>
                     <CartImg src="https://cdn-icons-png.flaticon.com/128/1170/1170576.png"/>
-                    <CartCount show={true}>3</CartCount>
+                    <CartCount show={show}>{count}</CartCount>
                 </CartContainer>
                 </Nav>
             </>
